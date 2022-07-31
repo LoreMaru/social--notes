@@ -12,5 +12,3 @@ const MainModal = ({ MainModalContent }) => {
 };
 
 export default MainModal;
-
-/*{MainModalContent ? { MainModalContent } : <WelcomeMSG />}*/

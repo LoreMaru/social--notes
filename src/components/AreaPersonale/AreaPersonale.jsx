@@ -42,7 +42,6 @@ const AreaPersonale = () => {
       setModalContent("Dati errati, accesso non consentito");
     }
     setLogIn(false);
-    // setModalContent("Accesso Effettuato");
   };
 
   const onSetUserData = (e) => {
