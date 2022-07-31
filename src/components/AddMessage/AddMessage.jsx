@@ -16,6 +16,8 @@ const AddMessage = ({ isRenderedList, setRenderedList }) => {
         sender: localStorage.getItem("username") || "Anonimo",
         IMG: messageIMG,
         date: new Date().toLocaleDateString(),
+        like: 0,
+        dislike: 0,
       }).then(() => {
         setMessageText("");
         setSender("");
