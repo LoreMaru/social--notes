@@ -1,0 +1,18 @@
+.Navbar {
+  height: 100px;
+  background-color: #edf2f4;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.Navbar__actualUser {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.Navbar__actualUser--avatar {
+  height: 85px;
+}

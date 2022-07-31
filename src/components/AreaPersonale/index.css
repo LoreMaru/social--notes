@@ -1,0 +1,32 @@
+.AreaPersonale button {
+  padding: 10px;
+  margin: 50px;
+  border: none;
+  border-radius: 6px;
+  box-shadow: 0 0 2px rgba(24, 24, 24, 0.45);
+  background-color: rgba(217, 4, 41, 0.8);
+  color: #edf2f4;
+}
+
+.AreaPersonale button:hover {
+  cursor: pointer;
+  color: #2b2d42;
+  background-color: rgba(239, 35, 60, 0.8);
+}
+
+.AreaPersonale form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.AreaPersonale input {
+  padding: 6px 20px;
+  border: none;
+  border-radius: 6px;
+  box-shadow: 0 0 2px rgba(24, 24, 24, 0.45);
+  width: 500px;
+  height: 50px;
+}

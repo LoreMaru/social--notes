@@ -1,0 +1,24 @@
+.AddComment__form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.AddComment__form--inputMSG {
+  border: none;
+  padding: 6px 20px;
+  border-radius: 6px;
+  box-shadow: 0 0 2px rgba(24, 24, 24, 0.45);
+}
+
+.AddComment__form--button {
+  padding: 5px;
+  margin: 5px;
+  border: none;
+  border-radius: 6px;
+  box-shadow: 0 0 2px rgba(24, 24, 24, 0.45);
+}
+
+.AddComment__form--button:hover {
+  cursor: pointer;
+}

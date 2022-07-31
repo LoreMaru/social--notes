@@ -1,0 +1,59 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway+Dots&display=swap");
+
+.MessageCard {
+  position: relative;
+  padding: 6px 20px;
+  border-radius: 6px;
+  box-shadow: 0 0 2px rgba(24, 24, 24, 0.45);
+  width: 500px;
+  height: max-content;
+}
+
+.MessageCard__text {
+  font-size: 1rem;
+}
+
+.MessageCard__info {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  font-size: 0.9rem;
+  color: rgb(174, 174, 174);
+}
+
+.MessageCard__delete {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: transparent;
+  border: 0;
+  font-family: "Raleway Dots", cursive;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.35s;
+}
+
+.MessageCard__delete:hover {
+  transform: scale(0.5);
+}
+
+.MessageCard__delete:active {
+  color: lightseagreen;
+}
+
+.MessageCard__reaction {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.MessageCard__reaction--emote:hover {
+  filter: saturate(0);
+  cursor: pointer;
+}
+
+.CommentCard__text {
+  width: 200px;
+  border: 1px blue;
+}

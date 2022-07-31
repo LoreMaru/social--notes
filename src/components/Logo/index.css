@@ -1,0 +1,16 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway+Dots&display=swap");
+
+.Logo {
+  display: flex;
+  align-content: baseline;
+  justify-content: baseline;
+  font-family: "Raleway Dots", cursive;
+}
+
+.Logo img {
+  width: 50px;
+}
+
+.Logo__penIcon {
+  transform: scaleX(-1);
+}
