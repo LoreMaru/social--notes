@@ -1,6 +1,8 @@
-.WelcomeMSG {
-  width: 95vw;
-}
-.WelcomeMSG img {
-  width: 95vw;
+@media only screen and (max-width: 600px) {
+  .WelcomeMSG {
+    width: 95vw;
+  }
+  .WelcomeMSG img {
+    width: 50vw;
+  }
 }

@@ -8,9 +8,18 @@
 }
 
 .Logo img {
-  width: 10vw;
+  width: 50px;
 }
 
 .Logo__penIcon {
   transform: scaleX(-1);
+}
+
+@media only screen and (max-width: 600px) {
+  .Logo img {
+    width: 5vw;
+  }
+  .Logo h2 {
+    font-size: 1rem;
+  }
 }

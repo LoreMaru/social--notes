@@ -1,11 +1,11 @@
 .FriendCard {
   padding: 10px;
-  width: 60vw;
+  width: 500px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  box-shadow: 0 0 4px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 0 4px rgba(43, 45, 66, 0.35);
   color: rgb(23, 23, 23);
   cursor: pointer;
   transition: all 0.35s;
@@ -13,7 +13,7 @@
 }
 
 .FriendCard:hover {
-  background: lightseagreen;
+  background: #edf2f4;
 }
 
 .FriendCard__avatar {
@@ -27,4 +27,10 @@
   font-size: 0.9rem;
   font-weight: bold;
   width: 80px;
+}
+
+@media only screen and (max-width: 600px) {
+  .FriendCard {
+    width: 60vw;
+  }
 }

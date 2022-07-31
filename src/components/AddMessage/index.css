@@ -9,8 +9,8 @@
   padding: 6px 20px;
   border-radius: 6px;
   box-shadow: 0 0 2px rgba(24, 24, 24, 0.45);
-  width: 50vw;
-  height: 20vh;
+  width: 500px;
+  height: 150px;
 }
 
 .AddMessage__form--inputIMG {
@@ -18,7 +18,7 @@
   border: none;
   border-radius: 6px;
   box-shadow: 0 0 2px rgba(24, 24, 24, 0.45);
-  width: 50vw;
+  width: 500px;
   height: 50px;
 }
 
@@ -32,4 +32,16 @@
 
 .AddMessage__form--button:hover {
   cursor: pointer;
+}
+
+@media only screen and (max-width: 600px) {
+  .AddMessage__form--inputMSG {
+    width: 50vw;
+    height: 20vh;
+  }
+
+  .AddMessage__form--inputIMG {
+    width: 50vw;
+    height: 50px;
+  }
 }
