@@ -1,9 +1,10 @@
 import "./index.css";
+import wellcomIMG from "../../asset/humaaans.png";
 
 const WelcomeMSG = () => {
   return (
     <div className="WelcomeMSG">
-      <img src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/d4156f91706591.5e3906ec9acf9.gif" />
+      <img src={wellcomIMG} className="WelcomeMSG__IMG" />
       <h1>Benvenuto su Social Notes!</h1>
       <h2>Iscriviti o accedi per postare</h2>
       <h3>
@@ -12,5 +13,4 @@ const WelcomeMSG = () => {
     </div>
   );
 };
-
 export default WelcomeMSG;
