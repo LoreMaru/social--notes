@@ -53,9 +53,12 @@
   cursor: pointer;
 }
 
-.CommentCard__text {
-  width: 200px;
-  border: 1px blue;
+.CommentCard {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  font-size: 0.9rem;
+  color: rgb(174, 174, 174);
 }
 
 @media only screen and (max-width: 600px) {

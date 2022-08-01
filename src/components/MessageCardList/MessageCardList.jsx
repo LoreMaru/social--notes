@@ -26,17 +26,19 @@ const MessageCardList = () => {
         setRenderedList={setRenderedList}
       />
       {messageList.length ? (
-        messageList.map((message) => (
-          <MessageCard
-            isRenderedList={isRenderedList}
-            setRenderedList={setRenderedList}
-            textContent={message}
-            getcomment={getcomment}
-            key={message.id}
-          />
-        ))
+        messageList
+          .sort((a, b) => (a.order < b.order ? 1 : b.order < a.order ? -1 : 0))
+          .map((message) => (
+            <MessageCard
+              isRenderedList={isRenderedList}
+              setRenderedList={setRenderedList}
+              textContent={message}
+              getcomment={getcomment}
+              key={message.id}
+            />
+          ))
       ) : (
-        <p>Loading...</p>
+        <img src="https://autodistribuzionetorino.it/Content/img/ajax-loader.gif" />
       )}
     </div>
   );

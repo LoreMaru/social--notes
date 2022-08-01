@@ -70,7 +70,8 @@ const AreaPersonale = () => {
     localStorage.removeItem("avatar");
     setLogIn(false);
     setIscrizione(false);
-    setModalContent("LogOut Effettuato");
+    // setModalContent("LogOut Effettuato");
+    window.location.reload();
   };
 
   return (
@@ -83,7 +84,11 @@ const AreaPersonale = () => {
         Iscriviti
       </button>
 
-      <button className="AreaPersonale__logOutBTN" onClick={logOut}>
+      <button
+        className="AreaPersonale__logOutBTN"
+        onClick={logOut}
+        disabled={!localStorage.getItem("username")}
+      >
         LogOut
       </button>
       <div style={{ display: logIn ? "block" : "none" }}>

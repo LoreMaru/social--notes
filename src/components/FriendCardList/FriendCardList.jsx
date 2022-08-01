@@ -22,7 +22,7 @@ const FriendCardList = () => {
           />
         ))
       ) : (
-        <p>Loading...</p>
+        <img src="https://autodistribuzionetorino.it/Content/img/ajax-loader.gif" />
       )}
     </div>
   );

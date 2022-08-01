@@ -9,12 +9,19 @@ const AddComment = ({ isRenderedList, setRenderedList, messageTextId }) => {
   const onFormSubmit = (e) => {
     e.preventDefault();
 
+    const sendTime = `${new Date().toLocaleDateString()}  ${new Date().getHours()}:${new Date().getMinutes()}:${new Date().getSeconds()}`;
+
     if (commentText) {
       POST("comments", {
         text: commentText,
         sender: localStorage.getItem("username") || "Anonimo",
         messageId: messageTextId,
-        date: new Date().toLocaleDateString(),
+        date: sendTime,
+        order: sendTime
+          .replaceAll("/", " ")
+          .replaceAll(":", " ")
+          .split(" ")
+          .join(""),
       }).then(() => {
         setCommentText("");
         setSender("");
