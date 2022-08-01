@@ -29,4 +29,16 @@ const DELETE = async (path, id) => {
   return await res.json();
 };
 
-export { GET, POST, DELETE };
+const PATCH = async (path, postId, body) => {
+  const res = await fetch(BASE_URL + path + postId, {
+    method: "PATCH",
+    headers: {
+      "Content-type": "application/json; charset=UTF-8",
+    },
+    body: JSON.stringify(body),
+  });
+
+  return await res.json();
+};
+
+export { GET, POST, DELETE, PATCH };

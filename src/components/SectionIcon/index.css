@@ -4,14 +4,17 @@
   width: 60px;
   height: 60px;
   padding: 5px 10px;
+  color: #2b2d42;
 }
 
 .SectionIcon:hover {
   box-shadow: rgba(43, 45, 66, 0.35) 0px 5px 15px;
+  color: #ef233c;
 }
 
 .SectionIcon:active {
   box-shadow: rgba(43, 45, 66, 0.06) 0px 2px 4px 0px inset;
+  color: #ef233c;
 }
 
 @media only screen and (max-width: 600px) {
@@ -19,5 +22,13 @@
     width: 10vw;
     height: 10vw;
     margin: 0;
+  }
+
+  .SectionIcon:hover {
+    color: #ef233c;
+  }
+
+  .SectionIcon:active {
+    color: #ef233c;
   }
 }

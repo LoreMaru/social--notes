@@ -1,3 +1,4 @@
+import { Icon } from "@iconify/react";
 import Logo from "../Logo/Logo";
 import SectionIcon from "../SectionIcon/SectionIcon";
 import FriendCardList from "../FriendCardList/FriendCardList";
@@ -11,17 +12,17 @@ const Navbar = ({ setMainModalContent }) => {
       <Logo />
       <span className="Navbar__icon">
         <SectionIcon
-          IconIMGlink={"https://twemoji.maxcdn.com/v/latest/svg/1f465.svg"}
+          IconIMGlink={"carbon:user-multiple"}
           altText={"Utenti"}
           onHandleClick={() => setMainModalContent(<FriendCardList />)}
         />
         <SectionIcon
-          IconIMGlink={"https://twemoji.maxcdn.com/v/latest/svg/2709.svg"}
+          IconIMGlink={"ic:outline-local-post-office"}
           altText={"Messaggi"}
           onHandleClick={() => setMainModalContent(<MessageCardList />)}
         />
         <SectionIcon
-          IconIMGlink={"https://twemoji.maxcdn.com/v/latest/svg/1f50f.svg"}
+          IconIMGlink={"bi:shield-lock"}
           altText={"Area Personale"}
           onHandleClick={() => setMainModalContent(<AreaPersonale />)}
         />
@@ -36,5 +37,9 @@ const Navbar = ({ setMainModalContent }) => {
     </div>
   );
 };
+
+// IconIMGlink={"https://twemoji.maxcdn.com/v/latest/svg/1f465.svg"}
+// IconIMGlink={"https://twemoji.maxcdn.com/v/latest/svg/2709.svg"}
+// IconIMGlink={"https://twemoji.maxcdn.com/v/latest/svg/1f50f.svg"}
 
 export default Navbar;

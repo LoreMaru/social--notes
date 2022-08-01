@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { DELETE, GET } from "../../utils/api";
+import { DELETE, PATCH } from "../../utils/api";
 import Modal from "../Modal/Modal";
 import CommentCard from "../CommentCard";
 import AddComment from "../AddComment/AddComment";
@@ -27,15 +27,7 @@ const MessageCard = ({
 
   const likePost = (postId) => {
     likeValue += 1;
-    fetch("https://fake-social-api.herokuapp.com/messages/" + postId, {
-      method: "PATCH",
-      body: JSON.stringify({
-        like: likeValue,
-      }),
-      headers: {
-        "Content-type": "application/json; charset=UTF-8",
-      },
-    }).then(() => {
+    PATCH("messages/", postId, { like: likeValue }).then(() => {
       setRenderedList(!isRenderedList);
     });
   };
@@ -44,15 +36,7 @@ const MessageCard = ({
 
   const dislikePost = (postId) => {
     dislikeValue += 1;
-    fetch("https://fake-social-api.herokuapp.com/messages/" + postId, {
-      method: "PATCH",
-      body: JSON.stringify({
-        dislike: dislikeValue,
-      }),
-      headers: {
-        "Content-type": "application/json; charset=UTF-8",
-      },
-    }).then(() => {
+    PATCH("messages/", postId, { dislike: dislikeValue }).then(() => {
       setRenderedList(!isRenderedList);
     });
   };
@@ -64,60 +48,55 @@ const MessageCard = ({
   });
 
   return (
-    <>
-      <div className="MessageCard">
-        <div className="MessageCard__content">
-          <button
-            className="MessageCard__delete"
-            onClick={() => deleteMessage()}
-          >
-            X
-          </button>
-          <img src={textContent.IMG} />
-          <p className="MessageCard__text">{textContent.text}</p>
-          <div className="MessageCard__info">
-            <p className="MessageCard__info--sender">{textContent.sender}</p>
-            <p className="MessageCard__info--date">{textContent.date}</p>
-          </div>
-          <div className="MessageCard__reaction">
-            <h2
-              onClick={() => likePost(textContent.id)}
-              className="MessageCard__reaction--emote"
-            >
-              👍️
-            </h2>
-            <p> {textContent.like}</p>
-            <h2
-              onClick={() => dislikePost(textContent.id)}
-              className="MessageCard__reaction--emote"
-            >
-              👎️
-            </h2>
-            <p> {textContent.dislike}</p>
-            <p>{}</p>
-          </div>
+    <div className="MessageCard">
+      <div className="MessageCard__content">
+        <button className="MessageCard__delete" onClick={() => deleteMessage()}>
+          X
+        </button>
+        <img src={textContent.IMG} />
+        <p className="MessageCard__text">{textContent.text}</p>
+        <div className="MessageCard__info">
+          <p className="MessageCard__info--sender">{textContent.sender}</p>
+          <p className="MessageCard__info--date">{textContent.date}</p>
         </div>
-        <Modal modalContent={getModalContent} />
-        {getcomment.map(
-          (comment) =>
-            comment.messageId == textContent.id && (
-              <CommentCard
-                getcomment={comment}
-                key={comment.id}
-                isRenderedList={isRenderedList}
-                setRenderedList={setRenderedList}
-              />
-            )
-        )}
-        <AddComment
-          setRenderedList={setRenderedList}
-          isRenderedList={isRenderedList}
-          messageTextId={textContent.id}
-          textContent={textContent}
-          setModalContent={setModalContent}
-        />
+        <div className="MessageCard__reaction">
+          <h2
+            onClick={() => likePost(textContent.id)}
+            className="MessageCard__reaction--emote"
+          >
+            👍️
+          </h2>
+          <p> {textContent.like}</p>
+          <h2
+            onClick={() => dislikePost(textContent.id)}
+            className="MessageCard__reaction--emote"
+          >
+            👎️
+          </h2>
+          <p> {textContent.dislike}</p>
+          <p>{}</p>
+        </div>
       </div>
-    </>
+      <Modal modalContent={getModalContent} />
+      {getcomment.map(
+        (comment) =>
+          comment.messageId == textContent.id && (
+            <CommentCard
+              getcomment={comment}
+              key={comment.id}
+              isRenderedList={isRenderedList}
+              setRenderedList={setRenderedList}
+            />
+          )
+      )}
+      <AddComment
+        setRenderedList={setRenderedList}
+        isRenderedList={isRenderedList}
+        messageTextId={textContent.id}
+        textContent={textContent}
+        setModalContent={setModalContent}
+      />
+    </div>
   );
 };
 
