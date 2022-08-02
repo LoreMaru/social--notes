@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useReducer } from "react";
 import { POST, GET } from "../../utils/api";
 import Modal from "../Modal/Modal";
 import "./index.css";
@@ -6,9 +6,6 @@ import "./index.css";
 const AreaPersonale = () => {
   const [iscrizione, setIscrizione] = useState(false);
   const [logIn, setLogIn] = useState(false);
-  const [usernameInput, setUsernameInput] = useState("");
-  const [passwordInput, setPasswordInput] = useState("");
-  const [avatarInput, setAvatarInput] = useState("");
   const [userData, setUserData] = useState([]);
   const [getModalContent, setModalContent] = useState(false);
 
@@ -32,11 +29,15 @@ const AreaPersonale = () => {
     let passwordData = userData.map((item) => item.password);
 
     if (
-      usernameData.includes(localStorage.getItem("username") || usernameInput) &
-      passwordData.includes(localStorage.getItem("password") || passwordInput)
+      usernameData.includes(
+        localStorage.getItem("username") || state.usernameInput
+      ) &
+      passwordData.includes(
+        localStorage.getItem("password") || state.passwordInput
+      )
     ) {
-      localStorage.setItem("username", usernameInput);
-      localStorage.setItem("password", passwordInput);
+      localStorage.setItem("username", state.usernameInput);
+      localStorage.setItem("password", state.passwordInput);
       setModalContent("Accesso Effettuato");
     } else {
       setModalContent("Dati errati, accesso non consentito");
@@ -46,19 +47,15 @@ const AreaPersonale = () => {
 
   const onSetUserData = (e) => {
     e.preventDefault();
-    localStorage.setItem("username", usernameInput);
-    localStorage.setItem("password", passwordInput);
-    localStorage.setItem("avatar", avatarInput);
+    localStorage.setItem("username", state.usernameInput);
+    localStorage.setItem("password", state.passwordInput);
+    localStorage.setItem("avatar", state.avatarInput);
     setModalContent("Iscrizione Effettuata");
 
     POST("users", {
-      username: usernameInput,
-      password: passwordInput,
-      avatar: avatarInput,
-    }).then(() => {
-      setUsernameInput("");
-      setPasswordInput("");
-      setAvatarInput("");
+      username: state.usernameInput,
+      password: state.passwordInput,
+      avatar: state.avatarInput,
     });
 
     setIscrizione(false);
@@ -70,9 +67,30 @@ const AreaPersonale = () => {
     localStorage.removeItem("avatar");
     setLogIn(false);
     setIscrizione(false);
-    // setModalContent("LogOut Effettuato");
     window.location.reload();
   };
+
+  //REDUCER
+  const initialFormState = {
+    usernameInput: "",
+    passwordInput: "",
+    avatarInput: "",
+  };
+
+  function reducer(state, action) {
+    switch (action.type) {
+      case "update":
+        return {
+          ...state,
+          [action.key]: action.value,
+        };
+
+      default:
+        return state;
+    }
+  }
+
+  const [state, dispatch] = useReducer(reducer, initialFormState);
 
   return (
     <div className="AreaPersonale">
@@ -94,15 +112,27 @@ const AreaPersonale = () => {
       <div style={{ display: logIn ? "block" : "none" }}>
         <form className="AreaPersonale__form--accedi" onSubmit={onGetUserData}>
           <input
-            value={usernameInput}
-            onChange={(e) => setUsernameInput(e.target.value)}
+            value={state.usernameInput}
+            onChange={(e) =>
+              dispatch({
+                type: "update",
+                value: e.target.value,
+                key: "usernameInput",
+              })
+            }
             type="text"
             placeholder="Nickname"
             required
           />
           <input
-            value={passwordInput}
-            onChange={(e) => setPasswordInput(e.target.value)}
+            value={state.passwordInput}
+            onChange={(e) =>
+              dispatch({
+                type: "update",
+                value: e.target.value,
+                key: "passwordInput",
+              })
+            }
             type="password"
             placeholder="Password"
           />
@@ -116,21 +146,39 @@ const AreaPersonale = () => {
           onSubmit={onSetUserData}
         >
           <input
-            value={usernameInput}
-            onChange={(e) => setUsernameInput(e.target.value)}
+            value={state.usernameInput}
+            onChange={(e) =>
+              dispatch({
+                type: "update",
+                value: e.target.value,
+                key: "usernameInput",
+              })
+            }
             type="text"
             placeholder="Nickname"
             required
           />
           <input
-            value={avatarInput}
-            onChange={(e) => setAvatarInput(e.target.value)}
+            value={state.avatarInput}
+            onChange={(e) =>
+              dispatch({
+                type: "update",
+                value: e.target.value,
+                key: "avatarInput",
+              })
+            }
             type="text"
             placeholder="URL avatar"
           />
           <input
-            value={passwordInput}
-            onChange={(e) => setPasswordInput(e.target.value)}
+            value={state.passwordInput}
+            onChange={(e) =>
+              dispatch({
+                type: "update",
+                value: e.target.value,
+                key: "passwordInput",
+              })
+            }
             type="password"
             placeholder="Password"
             required
