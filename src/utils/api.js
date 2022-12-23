@@ -1,4 +1,4 @@
-const BASE_URL = "https://fake-social-api.herokuapp.com/";
+const BASE_URL = "https://fake-social-api.vercel.app/";
 
 const GET = async (path) => {
   const res = await fetch(BASE_URL + path);
